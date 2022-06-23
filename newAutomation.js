@@ -1,7 +1,13 @@
+console.log("entered in src");
 const puppeteer = require("puppeteer");
 
-const link =
-  "https://moviezverse.com/download-doctor-strange-in-the-multiverse-of-madness-2022-hindi-english-480p-720p-1080p/";
+const form = document.getElementById("link");
+const submit = document.getElementById("submit");
+submit.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log(form.value);
+});
+
 try {
   (async () => {
     const browser = await puppeteer.launch({

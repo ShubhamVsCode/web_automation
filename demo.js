@@ -1,10 +1,12 @@
-const chromeLauncher = require("chrome-launcher");
-const axios = require("axios");
-const puppeteer = require("puppeteer");
+async function newFunction() {
+  const logger = (msg) => {
+    console.log(`
+      ${msg}
+      _______________________________________________________________________________
+    `);
+  };
 
-(async () => {
-  // Initializing a Chrome instance manually
-  const chrome = await chromeLauncher.launch({
-    headless: false,
-  });
-})();
+  logger("Starting function");
+}
+
+newFunction();

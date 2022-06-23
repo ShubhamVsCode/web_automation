@@ -1,5 +1,22 @@
 const puppeteer = require("puppeteer");
 
+async function waitForXseconds(seconds) {
+  console.log("Waiting for " + seconds + " seconds...");
+  setTimeout(() => {}, seconds * 1000);
+}
+
+async function switchToCurrentTab() {
+  let allTabs = await browser.pages();
+  console.log("all tabs loaded");
+
+  let currentTab = allTabs[allTabs.length - 1];
+  console.log("making currentTab");
+
+  await currentTab.title().then((title) => {
+    console.log("title: " + title);
+  });
+  return currentTab;
+}
 (async () => {
   // browser launch
 
@@ -24,7 +41,7 @@ const puppeteer = require("puppeteer");
     });
 
     console.log("clicked on download 1080p btn");
-    await page.waitFor(10000);
+    await waitForXseconds(10);
 
     let allTabs = await browser.pages();
     console.log("allTabs: " + allTabs, "allTabsLength: " + allTabs.length);
